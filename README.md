@@ -24,11 +24,11 @@ This plugin enables Azure Functions support within the Serverless Framework.
 Open up your `serverless.yml` file and update the following information:
 
 1. service: Name of the Azure function App you want to create
-2. Under provide section update the following config:
-  - subscriptionId: YourAzureSubscriptionID
-  - servicePrincipalTenantId: servicePrincipalTenantId
-  - servicePrincipalClientId: servicePrincipalClientId
-  - servicePrincipalPassword: servicePrincipalPassword
+2. Set following environment variables:
+  - azureSubId: YourAzureSubscriptionID
+  - azureServicePrincipalTenantId: servicePrincipalTenantId
+  - azureservicePrincipalClientId: servicePrincipalClientId
+  - azureServicePrincipalPassword: servicePrincipalPassword
 Note: If you created Service Principal User from Portal, servicePrincipalPassword is the authentication key
 
 ### Quick Start
