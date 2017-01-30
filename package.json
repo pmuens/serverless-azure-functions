@@ -1,0 +1,91 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "serverless-azure-cloudfunctions@git+https://github.com/pragnagopa/serverless-azure-functions.git",
+        "scope": null,
+        "escapedName": "serverless-azure-cloudfunctions",
+        "name": "serverless-azure-cloudfunctions",
+        "rawSpec": "git+https://github.com/pragnagopa/serverless-azure-functions.git",
+        "spec": "git+https://github.com/pragnagopa/serverless-azure-functions.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:pragnagopa/serverless-azure-functions.git",
+          "sshUrl": "git+ssh://git@github.com/pragnagopa/serverless-azure-functions.git",
+          "httpsUrl": "git+https://github.com/pragnagopa/serverless-azure-functions.git",
+          "gitUrl": "git://github.com/pragnagopa/serverless-azure-functions.git",
+          "shortcut": "github:pragnagopa/serverless-azure-functions",
+          "directUrl": "https://raw.githubusercontent.com/pragnagopa/serverless-azure-functions/master/package.json"
+        }
+      },
+      "E:\\serverless\\azure\\boilerplate-azurefunctions"
+    ]
+  ],
+  "_from": "git+https://github.com/pragnagopa/serverless-azure-functions.git",
+  "_id": "serverless-azure-functions@0.1.0",
+  "_inCache": true,
+  "_location": "/serverless-azure-functions",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "serverless-azure-cloudfunctions@git+https://github.com/pragnagopa/serverless-azure-functions.git",
+    "scope": null,
+    "escapedName": "serverless-azure-cloudfunctions",
+    "name": "serverless-azure-cloudfunctions",
+    "rawSpec": "git+https://github.com/pragnagopa/serverless-azure-functions.git",
+    "spec": "git+https://github.com/pragnagopa/serverless-azure-functions.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:pragnagopa/serverless-azure-functions.git",
+      "sshUrl": "git+ssh://git@github.com/pragnagopa/serverless-azure-functions.git",
+      "httpsUrl": "git+https://github.com/pragnagopa/serverless-azure-functions.git",
+      "gitUrl": "git://github.com/pragnagopa/serverless-azure-functions.git",
+      "shortcut": "github:pragnagopa/serverless-azure-functions",
+      "directUrl": "https://raw.githubusercontent.com/pragnagopa/serverless-azure-functions/master/package.json"
+    }
+  },
+  "_requiredBy": [],
+  "_resolved": "git+https://github.com/pragnagopa/serverless-azure-functions.git#aeaa4024ae22d739b38e6ef1cb9030919ae89824",
+  "_shasum": "af9f1a905eea81638d729d9f839ebd901bef1485",
+  "_shrinkwrap": null,
+  "_spec": "serverless-azure-cloudfunctions@git+https://github.com/pragnagopa/serverless-azure-functions.git",
+  "_where": "E:\\serverless\\azure\\boilerplate-azurefunctions",
+  "author": {
+    "name": "pragnagopa"
+  },
+  "dependencies": {
+    "async": "^2.1.2",
+    "azure-arm-resource": "1.6.1-preview",
+    "bluebird": "^3.4.6",
+    "chalk": "^1.1.3",
+    "lodash": "^4.16.6",
+    "ms-rest-azure": "*",
+	  "fs-extra": "*",
+	  "jszip": "*"
+  },
+  "description": "Provider plugin for the Serverless Framework v1.x which adds support for Azure Functions.",
+  "devDependencies": {},
+  "gitHead": "aeaa4024ae22d739b38e6ef1cb9030919ae89824",
+  "homepage": "https://github.com/serverless/serverless-azure-functions",
+  "keywords": [
+    "serverless",
+    "serverless framework",
+    "serverless applications",
+    "serverless modules",
+    "azure functions",
+    "iot",
+    "internet of things",
+    "serverless.com"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "serverless-azure-functions",
+  "optionalDependencies": {},
+  "readme": "# serverless-azure-functions\r\nWIP – Coming soon...\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "git": "https://github.com/serverless/serverless-azure-functions"
+  },
+  "version": "0.1.0"
+}
