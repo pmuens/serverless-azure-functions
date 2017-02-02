@@ -357,7 +357,7 @@ class AzureProvider {
     }
 
     invoke(functionName, eventType, eventData) {
-        if (eventType == 'httpTrigger' || eventType == 'http') {
+        if (eventType == 'http') {
             var queryString = "";
             if (eventData) {
                 Object.keys(eventData).forEach(key => {
@@ -449,24 +449,16 @@ class AzureProvider {
 
     createZipObject(functionName, entryPoint, filePath, params) {
         return new BbPromise((resolve, reject) => {
+            this.serverless.cli.log(`Packaging function: ${functionName}`);
             var folderForJSFunction = path.join(functionsFolder, functionName);
             var handlerPath = path.join(servicePath, filePath);
-            var bindingsFile = path.join(__dirname, "triggerBindings", params["eventType"] + "Trigger.json");
             if (!fs.existsSync(folderForJSFunction)) {
                 fs.mkdirSync(folderForJSFunction);
             }
             fse.copySync(handlerPath, path.join(folderForJSFunction, "index.js"));
-            fse.copySync(bindingsFile, path.join(folderForJSFunction, "function.json"));
-            var functionJSON = JSON.parse(fs.readFileSync(path.join(folderForJSFunction, "function.json")));
+            var functionJSON = params["functionsJson"];
             functionJSON["entryPoint"] = entryPoint;
-            if (params["eventType"] == "queue" && params["queueName"]) {
-                functionJSON["bindings"][0]["queueName"] = params["queueName"];
-            }
-            if (params["eventType"] == "http" && params["authLevel"]) {
-                functionJSON["bindings"][0]["authLevel"] = params["authLevel"];
-            }
-            fs.writeFileSync(path.join(folderForJSFunction, "function.json"), JSON.stringify(functionJSON));
-
+            fs.writeFileSync(path.join(folderForJSFunction, "function.json"), JSON.stringify(functionJSON,null,4));
             fs.readdirSync(functionsFolder).filter(function (folder) {
                 var folderName = path.basename(folder);
                 if (fs.statSync(path.join(functionsFolder, folder)).isDirectory() && (functionName == folderName)) {
