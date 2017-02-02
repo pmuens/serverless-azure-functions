@@ -60,7 +60,7 @@ class AzureProvider {
     constructor(serverless) {
         this.serverless = serverless;
         this.provider = this; // only load plugin in a azure service context
-        
+
         this.serverless.setProvider(constants.providerName, this);
         subscriptionId = process.env[this.serverless.service.provider["subscriptionId"]];
         servicePrincipalTenantId = process.env[this.serverless.service.provider["servicePrincipalTenantId"]];
@@ -108,11 +108,6 @@ class AzureProvider {
     CreateFunctionApp(method, params) {
         this.serverless.cli.log(`Creating function app: ${functionAppName}`);
         var resourceClient = new resourceManagement.ResourceManagementClient(principalCredentials, subscriptionId);
-        var templateFilePath = path.join(__dirname, "armTemplates","azuredeploy.json");
-        if (gitUrl) {
-            templateFilePath = path.join(__dirname, "armTemplates","azuredeployWithGit.json");
-        }
-        var template = JSON.parse(fs.readFileSync(templateFilePath, 'utf8'));
         var parameters = {
             "functionAppName": {
                 "value": functionAppName
@@ -128,6 +123,23 @@ class AzureProvider {
                 }
             };
         }
+
+        var templateFilePath = path.join(__dirname, "armTemplates", "azuredeploy.json");
+        if (gitUrl) {
+            templateFilePath = path.join(__dirname, "armTemplates", "azuredeployWithGit.json");
+        }
+        if (this.serverless.service.provider["armTemplate"]) {
+            templateFilePath = path.join(servicePath, this.serverless.service.provider["armTemplate"]["file"]);
+            var userParameters = this.serverless.service.provider["armTemplate"]["parameters"];
+            var userParametersKeys = Object.keys(userParameters);
+            for (var paramIndex = 0; paramIndex < userParametersKeys.length; paramIndex++) {
+                var item = {};
+                item[userParametersKeys[paramIndex]] = { "value": userParameters[userParametersKeys[paramIndex]] };
+                parameters = _.merge(parameters, item);
+            }
+        }
+
+        var template = JSON.parse(fs.readFileSync(templateFilePath, 'utf8'));
         var deploymentParameters = {
             "properties": {
                 "parameters": parameters,
@@ -135,6 +147,7 @@ class AzureProvider {
                 "mode": "Incremental"
             }
         };
+        
         return new BbPromise((resolve, reject) => {
             resourceClient.deployments.createOrUpdate(resourceGroupName,
                 deploymentName,
@@ -229,7 +242,7 @@ class AzureProvider {
             });
         });
     }
-   
+
     getDeployedFunctionsNames() {
         var requestUrl = 'https://' + functionAppName + constants.scmDomain + constants.functionsApiPath;
         var options = {
@@ -458,7 +471,7 @@ class AzureProvider {
             fse.copySync(handlerPath, path.join(folderForJSFunction, "index.js"));
             var functionJSON = params["functionsJson"];
             functionJSON["entryPoint"] = entryPoint;
-            fs.writeFileSync(path.join(folderForJSFunction, "function.json"), JSON.stringify(functionJSON,null,4));
+            fs.writeFileSync(path.join(folderForJSFunction, "function.json"), JSON.stringify(functionJSON, null, 4));
             fs.readdirSync(functionsFolder).filter(function (folder) {
                 var folderName = path.basename(folder);
                 if (fs.statSync(path.join(functionsFolder, folder)).isDirectory() && (functionName == folderName)) {
