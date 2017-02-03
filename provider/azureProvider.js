@@ -67,10 +67,12 @@ class AzureProvider {
     resourceGroupName = functionAppName + '-rg';
     deploymentName = resourceGroupName + '-deployment';
     functionsFolder = path.join(this.serverless.config.servicePath, 'functions');
-    this.parsedBindings = parseBindings.getBindingsMetaData(this.serverless);
   }
 
   getParsedBindings () {
+    if (!this.parsedBindings) {
+      this.parsedBindings = parseBindings.getBindingsMetaData(this.serverless);
+    }
     return this.parsedBindings;
   }
 

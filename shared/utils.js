@@ -1,5 +1,4 @@
 'use strict';
-const parseBindings = require('./parseBindings');
 
 const constants = {
   type: 'type',
