@@ -61,11 +61,16 @@
     "chalk": "^1.1.3",
     "lodash": "^4.16.6",
     "ms-rest-azure": "*",
-	  "fs-extra": "*",
-	  "jszip": "*"
+    "fs-extra": "*",
+    "jszip": "*"
   },
   "description": "Provider plugin for the Serverless Framework v1.x which adds support for Azure Functions.",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^3.14.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1"
+  },
   "gitHead": "aeaa4024ae22d739b38e6ef1cb9030919ae89824",
   "homepage": "https://github.com/serverless/serverless-azure-functions",
   "keywords": [

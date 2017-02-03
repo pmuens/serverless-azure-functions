@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
 module.exports = {
   getAdminKey () {
-    return this.provider.getAdminKey()
+    return this.provider.getAdminKey();
   }
-}
+};
