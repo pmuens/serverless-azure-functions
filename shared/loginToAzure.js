@@ -1,12 +1,8 @@
-'use strict';
-
-const _ = require('lodash');
-const BbPromise = require('bluebird');
+'use strict'
 
 module.exports = {
-  loginToAzure() {
-    const loginToAzurePromises = [];
-        this.serverless.cli.log(`Logging in to Azure`);
-     return this.provider.LoginWithServicePrincipal();
-  },
-};
+  loginToAzure () {
+    this.serverless.cli.log(`Logging in to Azure`)
+    return this.provider.LoginWithServicePrincipal()
+  }
+}

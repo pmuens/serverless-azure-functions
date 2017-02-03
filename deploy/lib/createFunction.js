@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-const utils = require('../../shared/utils');
+const utils = require('../../shared/utils')
 
 module.exports = {
-  createFunction() {
-    var functionName = this.options.function;
-    var metaData = utils.getFunctionMetaData(functionName, this.serverless);
-    return this.provider.createZipObject(functionName, metaData["entryPoint"], metaData["handlerPath"], metaData["params"])
-      .then(() => this.provider.createAndUploadZipFunctions());
-  },
-};
+  createFunction () {
+    var functionName = this.options.function
+    var metaData = utils.getFunctionMetaData(functionName, this.serverless)
+    return this.provider.createZipObject(functionName, metaData['entryPoint'], metaData['handlerPath'], metaData['params'])
+      .then(() => this.provider.createAndUploadZipFunctions())
+  }
+}

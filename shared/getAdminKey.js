@@ -1,9 +1,7 @@
-'use strict';
-
-const BbPromise = require('bluebird');
+'use strict'
 
 module.exports = {
-  getAdminKey() {
-    return this.provider.getAdminKey();
-  },
-};
+  getAdminKey () {
+    return this.provider.getAdminKey()
+  }
+}
